@@ -1,0 +1,15 @@
+.yh_header_container {
+  background-color: #FFF;
+  height: 80px;
+  line-height: 80px;
+  padding: 10px 20px;
+}
+.yh_sider_container {
+  height: 100vh;
+  background-color: #39435C;
+}
+
+.yh_main_container {
+  background-color: #EDEDED;
+  box-shadow: 0px 0px 5px #888888;
+}

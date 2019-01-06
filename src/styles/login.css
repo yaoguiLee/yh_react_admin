@@ -1,0 +1,60 @@
+.yh_login_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../static/login.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yh_login_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  margin-left: -15%;
+  box-shadow: -10px 10px 10px rgba(0,0,0,.4);
+  background: linear-gradient(230deg,rgba(53,57,74,0),#777);
+  border-radius: 8px;
+}
+.yh_login_form {
+  margin-top: 30px;
+  max-width: 275px;
+}
+.yh_login_h {
+  text-align: center;
+}
+.yh_form_forgot {
+  float: right;
+}
+.yh_login_btn {
+  width: 100%;
+}
+.yh_login_checkbox, .yh_form_forgot {
+  color: #FFF;
+}
+.yh_form_forgot:hover {
+  color: #3F3E3E;
+}
+.yh_login_footer {
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #FFF;
+  width: 14em; 
+  overflow: hidden; 
+  white-space: nowrap; 
+  animation: caret 0.5s step-end infinite ,typing 5s infinite steps(11);
+}
+@keyframes typing { 
+  from { width: 0; } 
+} 
+@keyframes caret { 
+  50% { border-color: transparent; } 
+}
