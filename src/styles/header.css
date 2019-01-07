@@ -2,12 +2,13 @@
   height: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-size: 18px;
 }
 .yh_header_right_main {
-  float: right;
+  position: absolute;
+  right: 0;
   line-height: 40px;
 }
 #yh_header_ul {

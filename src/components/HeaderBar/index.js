@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../../styles/header.css'
 import screenfull from 'screenfull'
-import { Icon, Badge, Avatar, Modal } from 'antd'
+import { Icon, Badge, Avatar, Modal, Breadcrumb } from 'antd'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
@@ -41,6 +41,9 @@ class HeaderBar extends Component {
     return (
       <div className="yh_header_bar">
         <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
+        <Breadcrumb style={{ marginLeft: 15 }}>
+          <Breadcrumb.Item>首页</Breadcrumb.Item>
+        </Breadcrumb>
         <div className="yh_header_right_main">
           <ul id="yh_header_ul">
             <li> <Icon type={icon} onClick={this.screenfullToggle}/> </li>
