@@ -1,0 +1,21 @@
+.yh_header_bar {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+.yh_header_right_main {
+  float: right;
+  line-height: 40px;
+}
+#yh_header_ul {
+  display: flex;
+  width: 180px;
+  margin: 0;
+}
+#yh_header_ul li {
+  flex-grow: 1;
+  text-align: center;
+}

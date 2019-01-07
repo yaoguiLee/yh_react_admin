@@ -130,6 +130,7 @@ class LoginForm extends Component {
           return;
         }
         setCookie(value.username)
+        this.props.appStore.initUserInfo()
         message.success('Login successfully!')
         const {from} = this.props.location.state || {from: {pathname: '/'}}
         this.props.history.push(from)

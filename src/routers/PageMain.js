@@ -3,7 +3,7 @@ import PageRouter from '../routers/PageRouter'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
 import Home from '../views/HomePage/index'
 import BasicForm from '../views/InputComponents/BasicForm'
-import UploadForm from '../views/InputComponents/BasicForm'
+import UploadForm from '../views/InputComponents/UploadForm'
 
 // const Home = function() { return () => import('../views/HomePage/index')}
 // const BasicForm = function() { return () => import('../views/InputComponents/BasicForm')}
