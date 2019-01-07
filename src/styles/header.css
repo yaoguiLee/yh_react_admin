@@ -17,6 +17,9 @@
   margin: 0;
 }
 #yh_header_ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
   text-align: center;
 }
