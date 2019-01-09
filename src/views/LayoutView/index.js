@@ -4,6 +4,7 @@ import PageMain from '../../routers/PageMain'
 import { Layout } from 'antd';
 import SiderNav from '../../components/SiderNav/index';
 import HeaderBar from '../../components/HeaderBar/index'
+import RouterTag from '../../components/RouterTags/index'
 import { withRouter } from 'react-router-dom'
 import '../../styles/layout.css';
 
@@ -42,6 +43,7 @@ class LayoutView extends Component {
             <Layout>
               <Header className="yh_header_container">
                 <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle} />
+                <RouterTag />
               </Header>
               <Content className="yh_main_container">
                 <PageMain />

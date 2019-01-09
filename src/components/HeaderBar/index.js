@@ -42,7 +42,7 @@ class HeaderBar extends Component {
     const breadcrumbList = getBreadcrumb(menuStore.getMenuList(), this.props.location.pathname, [])
     return (
       <div className="yh_header_bar">
-        <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
+        <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle}  style={{cursor: 'pointer' }}/>
         <Breadcrumb style={{ marginLeft: 15 }}>
           {
             ( breadcrumbList.length === 1 && breadcrumbList[0].path === '/home' ?
