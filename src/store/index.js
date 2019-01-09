@@ -1,6 +1,8 @@
 import appStore from './appStore'
+import menuStore from './menuStore'
 
 const store = {
-  appStore
+  appStore,
+  menuStore
 }
 export default store

@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 18px;
+  margin-top: -10px;
 }
 .yh_header_right_main {
   position: absolute;
@@ -15,6 +16,7 @@
   display: flex;
   width: 180px;
   margin: 0;
+  margin-right: 20px;
 }
 #yh_header_ul li {
   display: flex;

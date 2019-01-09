@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
-export default class HomePage extends Component {
+import { withRouter } from 'react-router-dom'
+@withRouter
+class HomePage extends Component {
   render() {
     return (
       <div>
@@ -9,3 +10,5 @@ export default class HomePage extends Component {
     )
   }
 }
+
+export default HomePage

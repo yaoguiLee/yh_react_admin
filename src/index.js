@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
-import { Provider} from 'mobx-react'
+import { Provider } from 'mobx-react'
 import store from './store';
 ReactDOM.render(
   <BrowserRouter>
-    <Provider {...store}>
+    <Provider  {...store}>
       <App />
     </Provider>
   </BrowserRouter>

@@ -7,9 +7,10 @@ import { withRouter } from 'react-router-dom'
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { inject, observer } from 'mobx-react/index';
 import { setCookie } from '../../tools/Cookie'
+// import { menus } from '../../tools/menuUtils'
 
 const canvasOptions = { id: "verifycode", width: "100", height: "39" }
-@withRouter @inject('appStore') @observer @Form.create()
+@withRouter @inject('appStore') @inject('menuStore') @observer @Form.create()
 class LoginForm extends Component {
   constructor(props) {
     super(props)

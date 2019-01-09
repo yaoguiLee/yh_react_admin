@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
-export default class UploadForm extends Component {
+import { withRouter } from 'react-router-dom'
+@withRouter
+class UploadForm extends Component {
   render() {
     return (
       <div>
@@ -9,3 +10,5 @@ export default class UploadForm extends Component {
     )
   }
 }
+
+export default UploadForm

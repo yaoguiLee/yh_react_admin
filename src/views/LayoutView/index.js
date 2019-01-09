@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
+// import { inject, observer } from 'mobx-react/index';
 import PageMain from '../../routers/PageMain'
 import { Layout } from 'antd';
 import SiderNav from '../../components/SiderNav/index';
 import HeaderBar from '../../components/HeaderBar/index'
+import { withRouter } from 'react-router-dom'
 import '../../styles/layout.css';
-export default class LayoutView extends Component {
+
+@withRouter
+class LayoutView extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
-      collapsed: false
+      collapsed: false,
+      currentPath: ''
     }
   }
   toggle = () => {
@@ -17,6 +22,9 @@ export default class LayoutView extends Component {
     this.setState({
       collapsed: !this.state.collapsed
     })
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({currentPath: nextProps.location.pathname})
   }
   render() {
     const { Header, Sider, Content } = Layout;
@@ -29,11 +37,11 @@ export default class LayoutView extends Component {
               collapsible
               collapsed={this.state.collapsed}
             >
-              <SiderNav collapsed={this.state.collapsed}/>
+              <SiderNav collapsed={this.state.collapsed} currentPath={this.state.currentPath}/>
             </Sider>
             <Layout>
               <Header className="yh_header_container">
-                <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
+                <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle} />
               </Header>
               <Content className="yh_main_container">
                 <PageMain />
@@ -45,3 +53,4 @@ export default class LayoutView extends Component {
     )
   }
 }
+export default LayoutView;

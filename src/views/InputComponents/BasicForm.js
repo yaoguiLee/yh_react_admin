@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
-export default class BasicForm extends Component {
+import { withRouter } from 'react-router-dom'
+@withRouter
+class BasicForm extends Component {
   render() {
     return (
       <div>
@@ -9,3 +10,5 @@ export default class BasicForm extends Component {
     )
   }
 }
+
+export default BasicForm

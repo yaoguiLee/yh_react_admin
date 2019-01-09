@@ -3,9 +3,10 @@ import '../../styles/header.css'
 import screenfull from 'screenfull'
 import { Icon, Badge, Avatar, Modal, Breadcrumb } from 'antd'
 import { inject, observer } from 'mobx-react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
+import { getBreadcrumb } from '../../tools/menuUtils'
 
-@withRouter @inject('appStore') @observer
+@withRouter @inject('appStore') @inject('menuStore') @observer
 class HeaderBar extends Component {
   constructor(props) {
     super(props)
@@ -37,19 +38,38 @@ class HeaderBar extends Component {
   }
   render() {
     const { icon, count, head, visible } = this.state
-    const { collapsed, appStore } = this.props
+    const { collapsed, appStore, menuStore} = this.props
+    const breadcrumbList = getBreadcrumb(menuStore.getMenuList(), this.props.location.pathname, [])
     return (
       <div className="yh_header_bar">
         <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
         <Breadcrumb style={{ marginLeft: 15 }}>
-          <Breadcrumb.Item>首页</Breadcrumb.Item>
+          {
+            ( breadcrumbList.length === 1 && breadcrumbList[0].path === '/home' ?
+                null 
+              :
+                <Breadcrumb.Item><Link to={"/home"}><span>首页</span></Link></Breadcrumb.Item>
+            )
+          }
+          {
+            breadcrumbList.map((value, index, list) => {
+             return index === list.length - 1 ?
+             <Breadcrumb.Item key={index}>
+                <Link to={value.path}> <span>{value.title}</span> </Link> 
+             </Breadcrumb.Item>
+             :
+             <Breadcrumb.Item key={index}>
+                <span>{value.title}</span>
+             </Breadcrumb.Item>
+            })
+          }
         </Breadcrumb>
         <div className="yh_header_right_main">
           <ul id="yh_header_ul">
             <li> <Icon type={icon} onClick={this.screenfullToggle}/> </li>
             <li> 
               <Badge count={appStore.isLogin ? count : 0} overflowCount={99}
-               style={{position: 'absolute',left: 0, width: '35px' }}>
+               style={{position: 'absolute',left: 0, width: '32px' }}>
                 <Icon type="notification"/>
               </Badge>
             </li>

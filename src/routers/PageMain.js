@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import PageRouter from '../routers/PageRouter'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
-import Home from '../views/HomePage/index'
-import BasicForm from '../views/InputComponents/BasicForm'
-import UploadForm from '../views/InputComponents/UploadForm'
+import LoadableComponent from '../components/LoadableComponent/index'
+// import Home from ''
+// import BasicForm from '../views/InputComponents/BasicForm'
+// import UploadForm from '../views/InputComponents/UploadForm'
+
+const Home = LoadableComponent(()=>import('../views/HomePage/index')) 
+const BasicForm = LoadableComponent(()=>import('../views/InputComponents/BasicForm')) 
+const UploadForm = LoadableComponent(()=>import('../views/InputComponents/UploadForm')) 
 
 // const Home = function() { return () => import('../views/HomePage/index')}
 // const BasicForm = function() { return () => import('../views/InputComponents/BasicForm')}
