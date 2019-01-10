@@ -3,7 +3,7 @@ import '../../styles/header.css'
 import screenfull from 'screenfull'
 import { Icon, Badge, Avatar, Modal, Breadcrumb } from 'antd'
 import { inject, observer } from 'mobx-react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { getBreadcrumb } from '../../tools/menuUtils'
 
 @withRouter @inject('appStore') @inject('menuStore') @observer
@@ -48,19 +48,16 @@ class HeaderBar extends Component {
             ( breadcrumbList.length === 1 && breadcrumbList[0].path === '/home' ?
                 null 
               :
-                <Breadcrumb.Item><Link to={"/home"}><span>首页</span></Link></Breadcrumb.Item>
+                <Breadcrumb.Item><span>首页</span></Breadcrumb.Item>
             )
           }
           {
             breadcrumbList.map((value, index, list) => {
-             return index === list.length - 1 ?
-             <Breadcrumb.Item key={index}>
-                <Link to={value.path}> <span>{value.title}</span> </Link> 
-             </Breadcrumb.Item>
-             :
-             <Breadcrumb.Item key={index}>
-                <span>{value.title}</span>
-             </Breadcrumb.Item>
+              return (
+                <Breadcrumb.Item key={index}>
+                  <span>{value.title}</span>
+                </Breadcrumb.Item>
+              )
             })
           }
         </Breadcrumb>

@@ -79,6 +79,7 @@ class CustomMenu extends Component {
       </Menu.SubMenu>
     )
   }
+
   render() {
     const {openPaths, selectPaths} = this.state
     return (

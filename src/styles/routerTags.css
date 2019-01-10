@@ -3,3 +3,11 @@
   align-items: center;
   height: 40px;
 }
+.yh_header_tag:hover {
+  color: #fa541c;
+  background: #fff2e8;
+  border-color: #ffbb96;
+}
+.yh_header_tag_link:focus {
+  text-decoration: none;
+}

@@ -39,6 +39,20 @@ export function getBreadcrumb(menus, path, targetList) {
   }
   return targetList
 }
+export function getTitleByPath(menus, path, targetList = {}) {
+  if (menus && menus.length > 0) {
+    for(let item of menus) {
+      if (item.path === path) {
+        targetList.title = item.title
+      } else {
+        if (item.children && item.children.length > 0) {
+            getTitleByPath(item.children, path, targetList);
+        }
+      }
+    }
+  }
+  return targetList
+}
 
 export function getPath(pathname) {
   var selectPaths = []
@@ -46,7 +60,7 @@ export function getPath(pathname) {
   const rank = pathname.split('/')
   switch (rank.length) {
     case 2:
-      selectPaths = pathname
+      selectPaths = [pathname]
       break;
     case 5 : //三级目录，要展开两个subMenu
     selectPaths = [pathname]
