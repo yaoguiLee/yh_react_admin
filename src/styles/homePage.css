@@ -1,25 +1,33 @@
+.yh-card-item {
+  padding: 0 12px;
+  padding-bottom: 8px;
+}
 .yh_card_container {
-  padding: 12px;
-  border-radius: 8px;
+  position: relative;
 }
 .yh_card_icon {
   font-size: 54px;
   float: left;
-  position: relative;
-  top: 8px;
+}
+.yh_card_title {
+  padding-left: 75px;
+}
+.yh_card_title p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .yh_card_right {
-  float: right;
+  position: absolute;
+  top: 24px;
+  right: 15px;
   width: 10px;
   height: 71px;
   border-radius: 5px;
   background-color: #EDEDED;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
-.yh_card_title {
-  padding-left: 75px;
-  float: left;
-}
+
 .yh_card_number {
   font-size: 24px;
   font-weight: blod;

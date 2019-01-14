@@ -12,9 +12,9 @@ class NumberCard extends React.Component {
     }
   }
   render() {
-    const { option } = this.props
+    const { option, span } = this.props
     return (
-      <Col className="gutter-row" span={6}>
+      <Col className="yh-card-item" span={span}>
         <div onMouseEnter={() => { this.setState({ animatedType: 'bounceIn' })}}
           onMouseLeave={() => { this.setState({ animatedType: 'fadeIn' })}}
         >
