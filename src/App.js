@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css'
+import './App.scss'
 import {Route,Switch} from 'react-router-dom'
 import LoginForm from './views/Login/index';
 // import PageMain from './routers/PageMain'
