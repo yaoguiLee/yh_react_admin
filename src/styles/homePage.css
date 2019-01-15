@@ -32,3 +32,37 @@
   font-weight: blod;
   margin: 0;
 }
+.yh_card_weather {
+  margin-bottom: 8px;
+  background: rgba(135, 206, 235, 0.4);
+  border-width: 0;
+}
+.yh_card_weather:hover {
+  box-shadow: 2px 2px 35px rgba(143, 201, 251, 0.5);
+}
+.yh_card_quote {
+  margin-bottom: 8px;
+  background-color: rgba(143, 118, 186, .5);
+}
+.yh_weather_container {
+  justify-content: space-between;
+  display: flex;
+  padding: 24px;
+  height: 220px;
+  color: #FFF;
+  font-size: 16px;
+}
+.yh_weather_left {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+}
+.yh_weather_right {
+  display: flex;
+  flex-direction: column;
+}
+.yh_weather_temperature {
+  font-size: 32px;
+  font-weight: bold;
+  color: #FFF;
+}

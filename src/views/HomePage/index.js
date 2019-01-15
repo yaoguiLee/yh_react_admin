@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Row, Col, Card } from 'antd';
 import { withRouter } from 'react-router-dom';
-import NumberCard from '../../components/NumberCard/index'
+import { pngName } from '../../tools/weather'
+import {
+  NumberCard,
+  Weather
+} from './components'
 import BaseLine from '../../components/EChart/Line/BaseLine'
 import { lineOption } from './chartData'
-
+import '../../styles/homePage.css'
+import axios from 'axios';
 const ENTER_ANIMATED = 'bounceIn', LEAVE_ANIMATED = 'fadeIn';
-const WIDTH_LEVEL_1 = 992, WIDTH_LEVEL_2 = 768;
-const SPAN_LEVEL_1 = 6, SPAN_LEVEL_2 = 12, SPAN_LEVEL_3 = 24;
-const SPAN_TWO_LEVEL_1 = 18, SPAN_TWO_LEVEL_2 = 24;
 const chartOption = lineOption
 @withRouter
 class HomePage extends Component {
@@ -24,31 +25,18 @@ class HomePage extends Component {
         { title: 'Active Projects', number: 7898, color: '#F797D6', icon: 'message', animatedType: '' },
         { title: 'Referrals', number: 7878, color: '#FFCD42', icon: 'shopping', animatedType: '' }
       ],
-      spanOne: SPAN_LEVEL_1,
-      spanTwo: SPAN_TWO_LEVEL_1
-
+      weatherInfo: {}
     }
   }
   componentDidMount() {
-    this.reLayout()
-    window.addEventListener('resize', () => this.reLayout())
-  }
-  componentWillUnmount() {
-    window.removeEventListener('resize', () => this.reLayout());
-  }
-  reLayout() {
-    const parentDom = ReactDOM.findDOMNode(this).parentNode
-    const width = parentDom.offsetWidth;
-    if (width < WIDTH_LEVEL_1) {
-      this.setState({ spanTwo: SPAN_TWO_LEVEL_2 })
-    }
-    if (width >= WIDTH_LEVEL_1) {
-      this.setState({ spanOne: SPAN_LEVEL_1 })
-    } else if (width < WIDTH_LEVEL_1 && width >= WIDTH_LEVEL_2) {
-      this.setState({ spanOne: SPAN_LEVEL_2 })
-    } else if (width < WIDTH_LEVEL_2) {
-      this.setState({ spanOne: SPAN_LEVEL_3, spanTwo: SPAN_TWO_LEVEL_2 })
-    }
+    axios.get('https://restapi.amap.com/v3/weather/weatherInfo?city=440300&key=de1b730dc92140ea95eca45189375535').then(rs => {
+      if (rs.data.infocode === '10000') {
+        const result = rs.data.lives[0]
+        const png = pngName[result.weather]
+        result.png = png ? require('../../assets/weather/'+ png + '.png') : '';
+        this.setState({weatherInfo: result})
+      }
+    })
   }
   mouseEnter = (index) => {
     var options = this.state.options
@@ -61,37 +49,40 @@ class HomePage extends Component {
     this.setState({ options: options })
   }
   render() {
-    const { options, spanOne, spanTwo } = this.state;
+    const { options, weatherInfo  } = this.state;
     return (
       <div>
         <Row gutter={24}>
           {
             options.map((option, index) => {
-              return <NumberCard option={option} key={option.icon} span={spanOne} animatedType={option.animatedType}
+              return <NumberCard option={option} key={option.icon} animatedType={option.animatedType}
                 onEnter={() => this.mouseEnter(index)}
                 onLeave={() => this.mouseLeave(index)}
               />
             })
           }
-          <Col span={spanTwo}>
-            <Card style={{ height: 456 }}>
+          <Col lg={18} md={24}>
+            <Card style={{ marginBottom: 8 }}>
               <BaseLine id={'chartLine'} width={'100%'} height={400} option={chartOption} />
             </Card>
           </Col>
-          {/* <Col span={6}>
+          <Col lg={6} md={24}>
             <Row gutter={16}>
-              <Col span={24}>
-                <Card style={{ height: 228 }}>
-                  2
+              <Col lg={24} md={12}>
+                <Card className="yh_card_weather" 
+                  bodyStyle={{height: 220, padding: 0}}
+                >
+                  <Weather {...weatherInfo}/>
               </Card>
               </Col>
-              <Col span={24}>
-                <Card style={{ height: 228 }}>
-                  3
+              <Col lg={24} md={12}>
+                <Card className="yh_card_quote"
+                  bodyStyle={{height: 220, padding: 0}}
+                >
               </Card>
               </Col>
             </Row>
-          </Col> */}
+          </Col>
         </Row>
       </div>
     )

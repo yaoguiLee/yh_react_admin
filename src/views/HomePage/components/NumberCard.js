@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { Col, Card, Icon } from 'antd';
-import '../../styles/homePage.css'
 
 const NumberCard = ({option, span, onEnter, onLeave }) => {
   return (
-    <Col className="yh-card-item" span={span}>
+    <Col className="yh-card-item" lg={6} md={12}>
       <div
         onMouseEnter={ () => onEnter() }
         onMouseLeave={ () => onLeave() }
